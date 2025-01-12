@@ -1,0 +1,43 @@
+{% include "master/index.html" %}
+<div class="container mt-5">
+    <div class="row">
+
+        {% for item in product_list %}
+        <div class="col-md-3 col-sm-12 mt-2">
+            <div class="card h-100"> <!-- Added h-100 class to ensure card fills height -->
+                <center>
+                    <img src="{{ item.image }}" class="card-img-top" style="width: 200px; height: 200px; object-fit: contain;" alt="Product Image">
+                </center>
+                <div class="card-body">
+                    <h5 class="card-title" style="height: 30px">
+                        {{ item.title.split()[:3] | join(' ') }}
+                    </h5>
+                    <strong>{{ item.price }}</strong>
+                    <p class="card-text" style="height: 100px;">
+                        {% set words = item.description.split() %}
+                        {% if words | length > 10 %}
+                        {{ words[:15] | join(' ') }}
+                        {% else %}
+                        {{ item.description }}
+                        {% endif %}
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                        <div>
+                            {% set full_stars = item.rating['rate'] | int %}
+                            {% set empty_stars = 5 - full_stars %}
+                            {% for _ in range(full_stars) %}
+                            <span class="fa fa-star" style="color:darkred"></span>
+                            {% endfor %}
+                            {% for _ in range(empty_stars) %}
+                            <span class="fa fa-star"></span>
+                            {% endfor %}
+                        </div>
+                        <a target="_blank" href="/product_detail?id={{ item['id'] }}" class="btn btn-primary">More...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>

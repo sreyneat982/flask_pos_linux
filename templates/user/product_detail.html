@@ -1,0 +1,36 @@
+{% include "master/index.html" %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12">
+            <img src="{{current_product.image}}" alt="" class="card-img-top">
+        </div>
+        <div class="col-md-9 col-sm-12">
+            {{product_id}}
+            <h3>{{ current_product.title }}</h3>
+            <p>{{ current_product.description }}</p>
+            <div>
+                {% set full_stars = current_product.rating['rate'] | int %}
+                {% set empty_stars = 5 - full_stars %}
+                {% for _ in range(full_stars) %}<span class="fa fa-star" style="color:#8b0000"></span>
+                {% endfor %}
+                {% for _ in range(empty_stars) %}<span class="fa fa-star"></span>
+                {% endfor %}
+            </div>
+            <h4>
+                <span class="btn btn-danger mt-3">
+                    {{ current_product.price }} $
+                </span>
+            </h4>
+            <hr>
+            <a target="_self" href="/checkout?id={{ current_product.id }}" style="float: right;"
+                class="btn btn-primary ">
+                Check Out
+            </a>
+        </div>
+    </div>
+
+</div>
+<script>
+
+</script>

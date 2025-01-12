@@ -1,0 +1,100 @@
+<!-- {% include "master/index.html"  %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB1</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body style="font-size: 20px;">
+
+
+
+
+
+
+
+    <form class="max-w-sm mx-auto">
+
+        <h3 class="text-3xl font-bold text-center dark:text-white">Calculator</h3>
+
+        <div class="mb-5">
+            <label for="value_a" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Value A</label>
+            <input type="value_a" id="value_a"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+        </div>
+        <div class="mb-5">
+            <label for="value_b" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Value B</label>
+            <input type="text" id="value_b"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required />
+        </div>
+
+        <button type="button" id="sum"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Sum</button>
+        <button type="button" id="minus"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Minus</button>
+        <button type="button" id="mul"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Multiply</button>
+        <button type="button" id="divide"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Divide</button>
+
+
+        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+        <div class="flex items-center">
+            <h4 class="text-2xl font-bold text-center dark:text-white">Result: </h4>
+            <h4 class="text-2xl font-bold text-center dark:text-white" id="result">...</h4>
+        </div>
+        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+        <button type="button" id="goto"
+            class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Go to Lab2</button>
+    </form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+       
+        let value_a = document.getElementById('value_a')
+        let value_b = document.getElementById('value_b')
+       
+        let btn_sum = document.getElementById('sum')
+        let btn_minus = document.getElementById('minus')
+        let btn_mul = document.getElementById('mul')
+        let btn_divide = document.getElementById('divide')
+      
+        let result = document.getElementById('result')
+        let btn_goto = document.getElementById('goto')
+        btn_sum.addEventListener('click', function () {
+            let sum = parseFloat(value_a.value) + parseFloat(value_b.value)
+            result.innerText = sum
+
+        })
+        
+        btn_minus.addEventListener('click', function () {
+            let minus = parseFloat(value_a.value) - parseFloat(value_b.value)
+            result.innerText = minus
+
+        })
+        btn_mul.addEventListener('click', function () {
+            let mul = parseFloat(value_a.value) * parseFloat(value_b.value)
+            result.innerText = mul
+
+        })
+        btn_divide.addEventListener('click', function () {
+            let div = parseFloat(value_a.value) / parseFloat(value_b.value)
+            result.innerText = div
+
+        })
+        btn_goto.addEventListener('click',function(){
+            window.location.href = "/lab2"
+        })
+    </script>
+</body>
+
+
+</html>
